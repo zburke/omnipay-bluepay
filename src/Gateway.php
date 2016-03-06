@@ -150,5 +150,4 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\BluePay\Message\SaleRequest', $parameters);
     }
-
 }
