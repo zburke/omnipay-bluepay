@@ -115,13 +115,13 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     protected function getBaseData()
     {
-        $data = [
+        $data = array(
             'ACCOUNT_ID' => $this->getAccountId(),
             'TAMPER_PROOF_SEAL' => $this->tps(),
             'TRANS_TYPE' => $this->action,
             'MODE' => $this->getDeveloperMode() ? 'TEST' : 'LIVE',
             'MASTER_ID' => $this->getToken(),
-        ];
+        );
         return $data;
     }
 

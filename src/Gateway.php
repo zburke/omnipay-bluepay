@@ -21,10 +21,10 @@ class Gateway extends AbstractGateway
 
     public function getDefaultParameters()
     {
-        return [
+        return array(
             'accountId' => '',
             'secretKey' => '',
-        ];
+        );
     }
 
 
