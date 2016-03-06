@@ -132,7 +132,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['AMOUNT'] = $this->getAmount();
 
         if ($card = $this->getCard()) {
-
             $data['PAYMENT_ACCOUNT'] = $card->getNumber();
             $data['NAME1']   = $card->getBillingFirstName();
             $data['NAME2']   = $card->getBillingLastName();
@@ -144,15 +143,14 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $data['PHONE']   = $card->getBillingPhone();
             $data['EMAIL']   = $card->getEmail();
             $data['COUNTRY'] = $card->getBillingCountry();
-
-            $data['MEMO']        = $this->getMemo();
-            $data['CUSTOM_ID']   = $this->getCustomId1();
-            $data['CUSTOM_ID2']  = $this->getCustomId2();
-            $data['ORDER_ID']    = $this->getOrderId();
-            $data['INVOICE_ID']  = $this->getInvoiceId();
-            $data['CUSTOMER_IP'] = $this->getClientIp();
-
         }
+
+        $data['MEMO']        = $this->getMemo();
+        $data['CUSTOM_ID']   = $this->getCustomId1();
+        $data['CUSTOM_ID2']  = $this->getCustomId2();
+        $data['ORDER_ID']    = $this->getOrderId();
+        $data['INVOICE_ID']  = $this->getInvoiceId();
+        $data['CUSTOMER_IP'] = $this->getClientIp();
 
         return $data;
     }

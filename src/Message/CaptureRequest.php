@@ -12,7 +12,6 @@ class CaptureRequest extends AbstractRequest
     public function getData()
     {
         $data = $this->getBaseData();
-        $data['MASTER_ID'] = $this->getToken();
 
         return array_merge($data, $this->getBillingData());
     }
