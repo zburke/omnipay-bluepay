@@ -18,7 +18,7 @@ class Response extends AbstractResponse
         $this->raw = (string) $data;
 
 
-        $this->data = [];
+        $this->data = array();
         if ($data && count($data)) {
             parse_str($data, $this->data);
         } else {
