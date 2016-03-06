@@ -1,0 +1,25 @@
+HTTP/1.1 200 OK
+Server: cloudflare-nginx
+Date: Sat, 05 Mar 2016 21:19:31 GMT
+Content-Type: text/html; charset=ISO-8859-1
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: __cfduid=d26939a41a08ca7ae3db6ad66518a2fc61457212771; expires=Sun, 05-Mar-17 21:19:31 GMT; path=/; domain=.bluepay.com; HttpOnly
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+CF-RAY: 27f09b4e8f5910cf-ORD
+
+ssl_card_number=41**********1111
+ssl_exp_date=0616
+ssl_amount=10.00
+ssl_invoice_number=
+ssl_departure_date=
+ssl_completion_date=
+ssl_result=0
+ssl_result_message=APPROVAL
+ssl_txn_id=12345
+ssl_approval_code=      
+ssl_cvv2_response=
+ssl_avs_response=
+ssl_account_balance=0.00
+ssl_txn_time=03/15/2014 04:11:45 PM

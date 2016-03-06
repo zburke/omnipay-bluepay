@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Server: cloudflare-nginx
+Date: Sun, 06 Mar 2016 02:41:59 GMT
+Content-Type: text/html; charset=ISO-8859-1
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: __cfduid=d5dab2121d5b42dfeb69b23ca9dfe271a1457232118; expires=Mon, 06-Mar-17 02:41:58 GMT; path=/; domain=.bluepay.com; HttpOnly
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+CF-RAY: 27f273a4a9842604-ORD
+
+TRANS_ID=100307070181&STATUS=1&AVS=M&CVV2=_&MESSAGE=Approved%20Sale&AUTH_CODE=JMEKZA&REBID=&TRANS_TYPE=SALE

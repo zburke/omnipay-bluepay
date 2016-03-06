@@ -1,0 +1,39 @@
+{
+    "name": "zburke/omnipay-bluepay",
+    "type": "library",
+    "description": "BluePay gateway for the Omnipay payment processing library",
+    "keywords": [
+        "bluepay",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "homepage": "https://github.com/zburke/omnipay-bluepay",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zak Burke",
+            "email": "zak.burke@gmail.com"
+        },
+        {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/zburke/omnipay-bluepay/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\BluePay\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

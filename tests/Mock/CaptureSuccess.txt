@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Server: cloudflare-nginx
+Date: Sun, 06 Mar 2016 02:35:00 GMT
+Content-Type: text/html; charset=ISO-8859-1
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: __cfduid=db7a026bbc9cf48b308694273a26edf451457231700; expires=Mon, 06-Mar-17 02:35:00 GMT; path=/; domain=.bluepay.com; HttpOnly
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+CF-RAY: 27f26970069b2525-ORD
+
+TRANS_ID=100307069429&STATUS=1&AVS=M&CVV2=_&MESSAGE=Approved%20Capture&AUTH_CODE=UUFAAR&REBID=&TRANS_TYPE=CAPTURE
