@@ -88,4 +88,24 @@ class GatewayTest extends GatewayTestCase
         $this->assertFalse($response->isSuccessful());
         $this->assertSame('CARD ACCOUNT NOT VALID', $response->getMessage());
     }
+
+    public function testAchPurchaseSuccess()
+    {
+        $this->setMockHttpResponse('AchSaleSuccess.txt');
+
+        $response = $this->gateway->achPurchase($this->purchaseOptions)->send();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertSame('100346171008', $response->getTransactionReference());
+    }
+
+    public function testAchPurchaseFailure()
+    {
+        $this->setMockHttpResponse('AchSaleFailure.txt');
+
+        $response = $this->gateway->achPurchase($this->purchaseOptions)->send();
+
+        $this->assertFalse($response->isSuccessful());
+        $this->assertSame('SECURITY ERROR', $response->getMessage());
+    }
 }

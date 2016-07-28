@@ -150,4 +150,10 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\BluePay\Message\SaleRequest', $parameters);
     }
+
+
+    public function achPurchase(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\BluePay\Message\AchSaleRequest', $parameters);
+    }
 }
