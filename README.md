@@ -15,7 +15,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "zburke/omnipay-bluepay": "~2.0"
+        "zburke/omnipay-bluepay": "~1.0"
     }
 }
 ```
