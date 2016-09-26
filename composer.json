@@ -1,5 +1,5 @@
 {
-    "name": "zburke/omnipay-bluepay",
+    "name": "adixon/omnipay-bluepay",
     "type": "library",
     "description": "BluePay gateway for the Omnipay payment processing library",
     "keywords": [
@@ -10,7 +10,7 @@
         "pay",
         "payment"
     ],
-    "homepage": "https://github.com/zburke/omnipay-bluepay",
+    "homepage": "https://github.com/adixon/omnipay-bluepay",
     "license": "MIT",
     "authors": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "name": "Omnipay Contributors",
-            "homepage": "https://github.com/zburke/omnipay-bluepay/contributors"
+            "homepage": "https://github.com/adixon/omnipay-bluepay/contributors"
         }
     ],
     "autoload": {
