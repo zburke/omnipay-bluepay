@@ -10,7 +10,7 @@
         "pay",
         "payment"
     ],
-    "homepage": "https://github.com/adixon/omnipay-bluepay",
+    "homepage": "https://github.com/zburke/omnipay-bluepay",
     "license": "MIT",
     "authors": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "name": "Omnipay Contributors",
-            "homepage": "https://github.com/adixon/omnipay-bluepay/contributors"
+            "homepage": "https://github.com/zburke/omnipay-bluepay/contributors"
         }
     ],
     "autoload": {
