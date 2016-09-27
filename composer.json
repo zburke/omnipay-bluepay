@@ -1,5 +1,5 @@
 {
-    "name": "adixon/omnipay-bluepay",
+    "name": "zburke/omnipay-bluepay",
     "type": "library",
     "description": "BluePay gateway for the Omnipay payment processing library",
     "keywords": [
