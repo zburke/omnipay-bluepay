@@ -44,6 +44,11 @@ class Response extends AbstractResponse
         return $this->valueFor('AUTH_CODE');
     }
 
+    public function getCardReference()
+    {
+        return $this->valueFor('AUTH_CODE');
+    }
+
 
     public function getMessage()
     {

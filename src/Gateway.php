@@ -6,6 +6,7 @@ use Omnipay\BluePay\Message\AuthRequest;
 use Omnipay\BluePay\Message\CaptureRequest;
 use Omnipay\BluePay\Message\RefundRequest;
 use Omnipay\BluePay\Message\SaleRequest;
+use Omnipay\BluePay\Message\CreateCardRequest;
 use Omnipay\Common\AbstractGateway;
 
 /**
@@ -155,5 +156,10 @@ class Gateway extends AbstractGateway
     public function achPurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\BluePay\Message\AchSaleRequest', $parameters);
+    }
+
+    public function createCard(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\BluePay\Message\CreateCardRequest', $parameters);
     }
 }
