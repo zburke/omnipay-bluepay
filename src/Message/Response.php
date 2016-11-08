@@ -46,7 +46,7 @@ class Response extends AbstractResponse
 
     public function getCardReference()
     {
-        return $this->valueFor('AUTH_CODE');
+        return $this->valueFor('TRANS_ID');
     }
 
 
@@ -71,6 +71,11 @@ class Response extends AbstractResponse
     public function getTransactionReference()
     {
         return $this->valueFor('TRANS_ID');
+    }
+
+    public function getNumberMasked()
+    {
+        return $this->valueFor('PAYMENT_ACCOUNT_MASK');
     }
 
 
