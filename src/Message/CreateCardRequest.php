@@ -10,12 +10,24 @@ namespace Omnipay\BluePay\Message;
  *
  * We do this by running an authorization for $0.
  */
-class CreateCardRequest extends AuthRequest
+class CreateCardRequest extends AbstractRequest
 {
+    protected $action = 'AUTH';
     public function getData()
     {
-        $data = parent::getData();
-        $data['AMOUNT'] = '0.00';
+        $action = $this->getParameter('action'); 
+        if ('Purchase' == $action) {
+            $this->action = 'SALE';
+        }
+        $data = $this->getBaseData();
+        $this->getCard()->validate();
+        $data['PAYMENT_ACCOUNT'] = $this->getCard()->getNumber();
+        $data['CARD_EXPIRE'] = $this->getCard()->getExpiryDate('my');
+        $data['CARD_CVV2'] = $this->getCard()->getCvv();
+        $data = array_merge($data, $this->getBillingData());
+        if ($this->action == 'AUTH') {
+          $data['AMOUNT'] = '0.00';
+        }
         return $data;
     }
 }
