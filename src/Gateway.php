@@ -7,6 +7,7 @@ use Omnipay\BluePay\Message\CaptureRequest;
 use Omnipay\BluePay\Message\RefundRequest;
 use Omnipay\BluePay\Message\SaleRequest;
 use Omnipay\BluePay\Message\CreateCardRequest;
+use Omnipay\BluePay\Message\CreateCardPurchaseRequest;
 use Omnipay\Common\AbstractGateway;
 
 /**
@@ -14,6 +15,13 @@ use Omnipay\Common\AbstractGateway;
  */
 class Gateway extends AbstractGateway
 {
+    // Override createRequests to pass on the testMode value
+    protected function createRequest($class, array $parameters) 
+    {
+        $parameters['testMode'] = $this->getParameter('testMode');
+        return parent::createRequest($class, $parameters);
+    }
+
     public function getName()
     {
         return 'BluePay';
@@ -25,6 +33,7 @@ class Gateway extends AbstractGateway
         return array(
             'accountId' => '',
             'secretKey' => '',
+            'testMode' => 0,
         );
     }
 
@@ -160,6 +169,11 @@ class Gateway extends AbstractGateway
 
     public function createCard(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\BluePay\Message\CreateCardRequest', $parameters);
+        if ($parameters['action'] == 'Purchase') {
+          return $this->createRequest('\Omnipay\BluePay\Message\CreateCardPurchaseRequest', $parameters);
+        }
+        else {
+          return $this->createRequest('\Omnipay\BluePay\Message\CreateCardRequest', $parameters);
+        }
     }
 }

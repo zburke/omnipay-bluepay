@@ -101,7 +101,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('memo', $value);
     }
 
-
     public function getDeveloperMode()
     {
         return $this->getParameter('developerMode');
@@ -112,13 +111,17 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $this->setParameter('developerMode', $value);
     }
 
+    public function getTestMode()
+    {
+        return $this->getParameter('testMode');
+    }
 
     protected function getBaseData()
     {
         $data = array(
             'ACCOUNT_ID' => $this->getAccountId(),
             'TRANS_TYPE' => $this->action,
-            'MODE' => $this->getDeveloperMode() ? 'TEST' : 'LIVE',
+            'MODE' => ($this->getDeveloperMode() || $this->getTestMode()) ? 'TEST' : 'LIVE',
             'MASTER_ID' => $this->getToken(),
         );
         return $data;

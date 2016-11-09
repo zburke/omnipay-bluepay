@@ -8,11 +8,11 @@ namespace Omnipay\BluePay\Message;
 /**
  * BluePay Create Credit Card Request.
  *
- * We do this by running an authorization for $0.
+ * Similar to ordinary sale, except we can't use a card reference.
  */
-class CreateCardRequest extends AbstractRequest
+class CreateCardPurchaseRequest extends AbstractRequest
 {
-    protected $action = 'AUTH';
+    protected $action = 'SALE';
   
     public function getData()
     {
@@ -22,7 +22,6 @@ class CreateCardRequest extends AbstractRequest
         $data['CARD_EXPIRE'] = $this->getCard()->getExpiryDate('my');
         $data['CARD_CVV2'] = $this->getCard()->getCvv();
         $data = array_merge($data, $this->getBillingData());
-        $data['AMOUNT'] = '0.00';
         return $data;
     }
 }
