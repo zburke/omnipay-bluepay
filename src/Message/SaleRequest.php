@@ -16,8 +16,7 @@ class SaleRequest extends AbstractRequest
         if ($cardReference = $this->getCardReference()) {
             $data['MASTER_ID'] = $cardReference;
             // $data['CARD_EXPIRE'] = $this->getCard()->getExpiryDate('my');
-        } 
-        elseif ($card = $this->getCard()) {
+        } elseif ($card = $this->getCard()) {
             $card->validate();
             $data['PAYMENT_ACCOUNT'] = $card->getNumber();
             $data['CARD_EXPIRE'] = $card->getExpiryDate('my');

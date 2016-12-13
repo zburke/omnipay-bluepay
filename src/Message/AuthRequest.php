@@ -14,15 +14,12 @@ class AuthRequest extends AbstractRequest
         $data = $this->getBaseData();
         if ($this->getCardReference()) {
             $data['MASTER_ID'] = $this->getCardReference();
-        } 
-        elseif ($this->getCard()) {
+        } elseif ($this->getCard()) {
             $this->getCard()->validate();
             $data['PAYMENT_ACCOUNT'] = $this->getCard()->getNumber();
             $data['CARD_EXPIRE'] = $this->getCard()->getExpiryDate('my');
             $data['CARD_CVV2'] = $this->getCard()->getCvv();
-        } 
-        else 
-        {
+        } else {
             // either cardReference or card is required
             $this->validate('card');
         }

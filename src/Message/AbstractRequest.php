@@ -160,7 +160,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     /**
      * Create the required data array values for a "tamper proof seal"
      * by hashing a bunch of parameters that are part of the transaction.
-     * Do this just before sending it. 
+     * Do this just before sending it.
      *
      * @return array
      */
@@ -172,8 +172,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         if (!empty($data['NAME1']) && !empty($data['PAYMENT_ACCOUNT'])) {
             $hashstr .= $data['NAME1'].$data['PAYMENT_ACCOUNT'];
             $tps =  array('TAMPER_PROOF_SEAL' => md5($hashstr));
-        }
-        // Otherwise I need to tell BluePay what I'm using for the TPS via the TPS_DEF value.
+        } // Otherwise I need to tell BluePay what I'm using for the TPS via the TPS_DEF value.
         else {
             $tps =  array(
                 'TAMPER_PROOF_SEAL' => md5($hashstr),

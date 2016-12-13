@@ -16,7 +16,7 @@ use Omnipay\Common\AbstractGateway;
 class Gateway extends AbstractGateway
 {
     // Override createRequests to pass on the testMode value
-    protected function createRequest($class, array $parameters) 
+    protected function createRequest($class, array $parameters)
     {
         $parameters['testMode'] = $this->getParameter('testMode');
         return parent::createRequest($class, $parameters);
@@ -171,8 +171,7 @@ class Gateway extends AbstractGateway
     {
         if ($parameters['action'] == 'Purchase') {
             return $this->createRequest('\Omnipay\BluePay\Message\CreateCardPurchaseRequest', $parameters);
-        }
-        else {
+        } else {
             return $this->createRequest('\Omnipay\BluePay\Message\CreateCardRequest', $parameters);
         }
     }
