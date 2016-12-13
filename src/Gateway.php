@@ -169,7 +169,7 @@ class Gateway extends AbstractGateway
 
     public function createCard(array $parameters = array())
     {
-        if ($parameters['action'] == 'Purchase') {
+        if (isset($parameters['action']) && $parameters['action'] == 'Purchase') {
             return $this->createRequest('\Omnipay\BluePay\Message\CreateCardPurchaseRequest', $parameters);
         } else {
             return $this->createRequest('\Omnipay\BluePay\Message\CreateCardRequest', $parameters);
