@@ -189,7 +189,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         // don't throw exceptions for 4xx errors
         // cribbed from https://github.com/thephpleague/omnipay-stripe/blob/master/src/Message/AbstractRequest.php
         // Fist add in my tamper-proof-seal
-        $data = array_merge($data,$this->tps($data));
+        $data = array_merge($data, $this->tps($data));
         $this->httpClient->getEventDispatcher()->addListener(
             'request.error',
             function ($event) {
