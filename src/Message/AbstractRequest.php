@@ -167,7 +167,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function tps($data)
     {
         // A basic hash is always used.
-        $hashstr = $this->getSecretKey() . $data['ACCOUNT_ID'] . $data['TRANS_TYPE'] . $data['AMOUNT'] . $data['MASTER_ID'];
+        $hashstr = $this->getSecretKey() . $data['ACCOUNT_ID'];
+        $hashstr .= $data['TRANS_TYPE'] . $data['AMOUNT'] . $data['MASTER_ID'];
         // Add in the first name and card data if I have them, that's what BluePay expects by default.
         if (!empty($data['NAME1']) && !empty($data['PAYMENT_ACCOUNT'])) {
             $hashstr .= $data['NAME1'].$data['PAYMENT_ACCOUNT'];
