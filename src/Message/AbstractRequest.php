@@ -101,7 +101,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('memo', $value);
     }
 
-
     public function getDeveloperMode()
     {
         return $this->getParameter('developerMode');
@@ -112,19 +111,21 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $this->setParameter('developerMode', $value);
     }
 
+    public function getTestMode()
+    {
+        return $this->getParameter('testMode');
+    }
 
     protected function getBaseData()
     {
         $data = array(
             'ACCOUNT_ID' => $this->getAccountId(),
-            'TAMPER_PROOF_SEAL' => $this->tps(),
             'TRANS_TYPE' => $this->action,
-            'MODE' => $this->getDeveloperMode() ? 'TEST' : 'LIVE',
+            'MODE' => ($this->getDeveloperMode() || $this->getTestMode()) ? 'TEST' : 'LIVE',
             'MASTER_ID' => $this->getToken(),
         );
         return $data;
     }
-
 
     protected function getBillingData()
     {
@@ -157,25 +158,28 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
 
     /**
-     * In lieu of sending the secret key, create a "tamper proof seal"
-     * by hashing a bunch of parameters that are part of the transaction
-     * and send that instead.
+     * Create the required data array values for a "tamper proof seal"
+     * by hashing a bunch of parameters that are part of the transaction.
+     * Do this just before sending it.
      *
-     * @return string
+     * @return array
      */
-    public function tps()
+    public function tps($data)
     {
-        $name = '';
-        $account = '';
-        if ($card = $this->getCard()) {
-            $name = $card->getBillingFirstName();
-            $account = $card->getNumber();
+        // A basic hash is always used.
+        $hashstr = $this->getSecretKey() . $data['ACCOUNT_ID'];
+        $hashstr .= $data['TRANS_TYPE'] . $data['AMOUNT'] . $data['MASTER_ID'];
+        // Add in the first name and card data if I have them, that's what BluePay expects by default.
+        if (!empty($data['NAME1']) && !empty($data['PAYMENT_ACCOUNT'])) {
+            $hashstr .= $data['NAME1'].$data['PAYMENT_ACCOUNT'];
+            $tps =  array('TAMPER_PROOF_SEAL' => md5($hashstr));
+        } else { // Otherwise I need to tell BluePay what I'm using for the TPS via the TPS_DEF value.
+            $tps =  array(
+                'TAMPER_PROOF_SEAL' => md5($hashstr),
+                'TPS_DEF' => "ACCOUNT_ID TRANS_TYPE AMOUNT MASTER_ID",
+            );
         }
-
-        $hashstr = $this->getSecretKey() . $this->getAccountId() . $this->action .
-        $this->getAmount() . $this->getToken() . $name . $account;
-
-        return md5($hashstr);
+        return $tps;
     }
 
 
@@ -183,6 +187,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         // don't throw exceptions for 4xx errors
         // cribbed from https://github.com/thephpleague/omnipay-stripe/blob/master/src/Message/AbstractRequest.php
+        // Fist add in my tamper-proof-seal
+        $data = array_merge($data, $this->tps($data));
         $this->httpClient->getEventDispatcher()->addListener(
             'request.error',
             function ($event) {

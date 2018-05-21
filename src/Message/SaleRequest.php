@@ -13,11 +13,14 @@ class SaleRequest extends AbstractRequest
     {
         $data = $this->getBaseData();
 
-        if ($card = $this->getCard()) {
+        if ($cardReference = $this->getCardReference()) {
+            $data['MASTER_ID'] = $cardReference;
+            // $data['CARD_EXPIRE'] = $this->getCard()->getExpiryDate('my');
+        } elseif ($card = $this->getCard()) {
             $card->validate();
-            $data['PAYMENT_ACCOUNT'] = $this->getCard()->getNumber();
-            $data['CARD_EXPIRE'] = $this->getCard()->getExpiryDate('my');
-            $data['CARD_CVV2'] = $this->getCard()->getCvv();
+            $data['PAYMENT_ACCOUNT'] = $card->getNumber();
+            $data['CARD_EXPIRE'] = $card->getExpiryDate('my');
+            $data['CARD_CVV2'] = $card->getCvv();
         }
 
         return array_merge($data, $this->getBillingData());
