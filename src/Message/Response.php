@@ -19,7 +19,7 @@ class Response extends AbstractResponse
 
 
         $this->data = array();
-        if ($data && count($data)) {
+        if ($data && strlen($data)) {
             parse_str($data, $this->data);
         } else {
             throw new InvalidResponseException();
