@@ -19,7 +19,7 @@ class Response extends AbstractResponse
 
 
         $this->data = array();
-        if ($data && count($data)) {
+        if ($data && strlen($data)) {
             parse_str($data, $this->data);
         } else {
             throw new InvalidResponseException();
@@ -29,7 +29,7 @@ class Response extends AbstractResponse
 
     public function isSuccessful()
     {
-        return isset($this->data['STATUS']) && ('0' === $this->data['STATUS'] || '1' === $this->data['STATUS']);
+        return isset($this->data['STATUS']) && ('1' === $this->data['STATUS']);
     }
 
 
