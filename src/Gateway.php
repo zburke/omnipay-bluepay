@@ -37,6 +37,10 @@ class Gateway extends AbstractGateway
         );
     }
 
+    public function setCard($value)
+    {
+        return $this->setParameter('card', $value);
+    }
 
     public function getAccountId()
     {

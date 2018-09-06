@@ -11,12 +11,11 @@ class RefundRequest extends AbstractRequest
 
     public function getData()
     {
-        $this->getCard()->validate();
+
+        $this->validate('transactionReference', 'amount');
 
         $data = $this->getBaseData();
-        $data['PAYMENT_ACCOUNT'] = $this->getCard()->getNumber();
-        $data['CARD_EXPIRE'] = $this->getCard()->getExpiryDate('my');
-        $data['CARD_CVV2'] = $this->getCard()->getCvv();
+        $data['MASTER_ID'] = $this->getParameter('transactionReference');
 
         return array_merge($data, $this->getBillingData());
     }

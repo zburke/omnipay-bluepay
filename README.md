@@ -2,10 +2,12 @@
 
 **BluePay driver for the Omnipay PHP payment processing library**
 
-[![Build Status](https://travis-ci.org/zburke/omnipay-bluepay.png?branch=master)](https://travis-ci.org/zburke/omnipay-bluepay)
+[![Build Status](https://travis-ci.org/emergingdzns/omnipay-bluepay.png?branch=master)](https://travis-ci.org/emergingdzns/omnipay-bluepay)
 
 [Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements BluePay support for Omnipay.
+
+This build is a fork of the package from https://github.com/zburke/omnipay-bluepay
 
 ## Installation
 
@@ -15,7 +17,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "zburke/omnipay-bluepay": "~1.0"
+        "emergingdzns/omnipay-bluepay": "~2.0"
     }
 }
 ```
@@ -44,5 +46,5 @@ If you want to keep up to date with release anouncements, discuss ideas for the 
 or ask more detailed questions, there is also a [mailing list](https://groups.google.com/forum/#!forum/omnipay) which
 you can subscribe to.
 
-If you believe you have found a bug, please report it using the [GitHub issue tracker](https://github.com/zburke/omnipay-bluepay/issues),
+If you believe you have found a bug, please report it using the [GitHub issue tracker](https://github.com/emergingdzns/omnipay-bluepay/issues),
 or better yet, fork the library and submit a pull request.
