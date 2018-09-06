@@ -1,5 +1,6 @@
 <?php
 
+use Log;
 namespace Omnipay\BluePay\Message;
 
 /**
@@ -34,7 +35,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('secretKey', $value);
     }
-
 
     public function getToken()
     {
@@ -188,7 +188,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         // Fist add in my tamper-proof-seal
         $data = array_merge($data, $this->tps($data));
 
-        $httpResponse = $this->httpClient->request('POST',$this->getEndpoint(), [], http_build_query($data));
+        $httpResponse = $this->httpClient->request('POST', $this->getEndpoint(), [], http_build_query($data));
+
         return $this->response = new Response($this, $httpResponse->getBody()->getContents());
     }
 
